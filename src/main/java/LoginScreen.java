@@ -4,5 +4,7 @@ public interface LoginScreen {
 
     void clickNextButton();
 
+    void clickSubmitButton();
+
     String getErrorMessage();
 }

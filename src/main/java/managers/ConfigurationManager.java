@@ -11,8 +11,10 @@ public class ConfigurationManager {
         return holder == null ? new ConfigurationManager() : holder;
     }
 
-    public String getPlatformVersion(){return getEnvironmentVariableValueOrDefault("platformVersion", "");}
+    public String getPlatformVersion(){return getEnvironmentVariableValueOrDefault("platformVersion", "12.4");}
     public String getMobilePlatform(){return getEnvironmentVariableValueOrDefault("platform", "Android");}
+    public String getDeviceName(){return getEnvironmentVariableValueOrDefault("deviceName", "iPhone XR");}
+
 
     private String getEnvironmentVariableValueOrDefault(String envVar, String defValue){
         String value = System.getenv(envVar);

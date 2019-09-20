@@ -8,11 +8,12 @@ public class IosWordPressApp implements WordpressApp {
     }
     @Override
     public LoginScreen loginScreen() {
-        return null;
+        return new IosLoginScreen(driver);
+
     }
 
     @Override
     public WelcomeScreen welcomeScreen() {
-        return null;
+        return new IosWelcomeScreen(driver);
     }
 }
