@@ -1,5 +1,4 @@
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 
 public class AndroidWordpressApp implements WordpressApp {
     private AppiumDriver driver;
@@ -10,11 +9,11 @@ public class AndroidWordpressApp implements WordpressApp {
 
     @Override
     public LoginScreen loginScreen() {
-        return null;
+        return new AndroidLoginScreen(driver);
     }
 
     @Override
     public WelcomeScreen welcomeScreen() {
-        return null;
+        return new AndroidWelcomeScreen(driver);
     }
 }

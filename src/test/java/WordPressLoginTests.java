@@ -1,14 +1,5 @@
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-import managers.ConfigurationManager;
-import managers.PlatformCapabilities;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.net.URL;
-
-import static org.hamcrest.Matchers.containsString;
 
 public class WordPressLoginTests extends AppiumTestBase{
 

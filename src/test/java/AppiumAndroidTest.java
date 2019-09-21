@@ -1,6 +1,5 @@
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.junit.Assert;
@@ -18,10 +17,10 @@ public class AppiumAndroidTest {
 
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION,"9.0");
-        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 2");
+        caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10.0");
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 3");
         caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
-        caps.setCapability(MobileCapabilityType.APP, "/Users/niko/IdeaProjects/appiumtests/src/WordPress.apk");
+        caps.setCapability(MobileCapabilityType.APP, "/Users/mkolis/projects/personal/hillel/appium-multiplatform-example/src/main/resources/WordPress.apk");
         caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,"org.wordpress.android.ui.WPLaunchActivity");
         caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,"org.wordpress.android");
         caps.setCapability(MobileCapabilityType.NO_RESET,true);
