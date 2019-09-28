@@ -2,12 +2,22 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import managers.ConfigurationManager;
 import managers.PlatformCapabilities;
+import managers.WebDriverController;
 import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.TestName;
+import utils.ExtendedTestWatcher;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppiumTestBase {
+
+    @Rule
+    public TestName name = new TestName();
+
+    @Rule
+    ExtendedTestWatcher testWatcher = new ExtendedTestWatcher();
 
     @Before
     public void setUp(){
@@ -20,9 +30,11 @@ public class AppiumTestBase {
 
         WordpressApp app;
         if(ConfigurationManager.getInstance().getMobilePlatform().equals("iOS")) {
+            WebDriverController.getInstance().getWebDriver("iOS");
             IOSDriver driver = new IOSDriver(url, PlatformCapabilities.iosCapabilities());
             app = new IosWordPressApp(driver);
         } else {
+            WebDriverController.getInstance().getWebDriver("iOS");
             AndroidDriver driver = new AndroidDriver(url, PlatformCapabilities.androidCapabilities());
             app = new AndroidWordpressApp(driver);
         }
