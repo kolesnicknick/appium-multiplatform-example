@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class WordPressLoginTests extends AppiumTestBase{
+public class Lesson16HWTests extends AppiumTestBase{
 
 
     @Test

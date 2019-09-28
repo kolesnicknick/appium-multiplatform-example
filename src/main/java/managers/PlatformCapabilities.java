@@ -41,4 +41,16 @@ public class PlatformCapabilities {
 
         return desiredCapabilities;
     }
+
+    public static DesiredCapabilities iosSafariCapabilities(){
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, config.getPlatformVersion());
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, config.getDeviceName());
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
+        capabilities.setCapability(  "bundleId", "com.imurchie.SafariLauncher");
+
+        return capabilities;
+    }
 }

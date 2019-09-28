@@ -4,6 +4,7 @@ import managers.ConfigurationManager;
 import managers.PlatformCapabilities;
 import org.junit.Before;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppiumTestBase {
@@ -29,4 +30,15 @@ public class AppiumTestBase {
         return app;
     }
 
+
+    public URL getURL(String host, String port){
+        URL url = null;
+        try {
+            url = new URL("http://" + host+ ":"+ port +"/wd/hub");
+
+        }
+        catch (MalformedURLException e){}
+
+        return url;
+    }
 }

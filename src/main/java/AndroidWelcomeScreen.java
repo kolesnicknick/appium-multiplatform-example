@@ -8,14 +8,14 @@ public class AndroidWelcomeScreen implements WelcomeScreen {
 
     public AndroidWelcomeScreen(AppiumDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, 30);
     }
 
 
     @Override
     public void clickLoginButton() {
         String id = "login_button";
-        driver.findElement(By.id("org.wordpress.android:id/login_button"));
-        driver.findElement(By.id("input")).sendKeys("kolesniknikolai92@gmail.com");
+        driver.findElement(By.id("login_button"));
         driver.findElement(By.id("login_request_magic_link")).click();
         driver.findElement(By.id("login_open_email_client")).click();
     }
