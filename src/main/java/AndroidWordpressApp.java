@@ -1,9 +1,9 @@
-import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 
 public class AndroidWordpressApp implements WordpressApp {
-    private AppiumDriver driver;
+    private AndroidDriver driver;
 
-    public AndroidWordpressApp(AppiumDriver driver){
+    public AndroidWordpressApp(AndroidDriver driver){
     this.driver = driver;
     }
 

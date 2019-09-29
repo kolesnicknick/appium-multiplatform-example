@@ -8,7 +8,7 @@ public class ExtendedTestWatcher extends TestWatcher {
 
     @Override
     protected void failed(Throwable e, Description desc) {
-        Screenshoter.takeScreenShot(WebDriverController.getDriver(), desc.getMethodName());
+        Screenshoter.takeScreenShot(WebDriverController.getInstance().getDriver(), desc.getMethodName());
     }
 
     @Override

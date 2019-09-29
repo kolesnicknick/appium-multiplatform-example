@@ -1,3 +1,4 @@
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import managers.ConfigurationManager;
@@ -17,7 +18,7 @@ public class AppiumTestBase {
     public TestName name = new TestName();
 
     @Rule
-    ExtendedTestWatcher testWatcher = new ExtendedTestWatcher();
+    public ExtendedTestWatcher testWatcher = new ExtendedTestWatcher();
 
     @Before
     public void setUp(){
@@ -25,32 +26,20 @@ public class AppiumTestBase {
     }
 
 
-    protected WordpressApp getMobileApp() throws Exception {
-        URL url = new URL("http://127.0.0.1:4723/wd/hub");
-
+    protected WordpressApp getMobileApp() {
         WordpressApp app;
+        AppiumDriver driver = WebDriverController.getInstance().getDriver();
         if(ConfigurationManager.getInstance().getMobilePlatform().equals("iOS")) {
-            WebDriverController.getInstance().getWebDriver("iOS");
-            IOSDriver driver = new IOSDriver(url, PlatformCapabilities.iosCapabilities());
-            app = new IosWordPressApp(driver);
+            WebDriverController.getInstance().getDriver();
+            app = new IosWordPressApp((IOSDriver) driver);
         } else {
-            WebDriverController.getInstance().getWebDriver("iOS");
-            AndroidDriver driver = new AndroidDriver(url, PlatformCapabilities.androidCapabilities());
-            app = new AndroidWordpressApp(driver);
+            app = new AndroidWordpressApp((AndroidDriver) driver);
         }
 
         return app;
     }
 
+    protected void beforeTest(){
 
-    public URL getURL(String host, String port){
-        URL url = null;
-        try {
-            url = new URL("http://" + host+ ":"+ port +"/wd/hub");
-
-        }
-        catch (MalformedURLException e){}
-
-        return url;
     }
 }

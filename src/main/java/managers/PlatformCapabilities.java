@@ -7,24 +7,19 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class PlatformCapabilities {
     private static ConfigurationManager config = ConfigurationManager.getInstance();
 
-    // TODO: Move app value to managers.ConfigurationManager
     public static DesiredCapabilities iosCapabilities() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, config.getPlatformVersion());
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, config.getDeviceName());
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-        desiredCapabilities.setCapability(MobileCapabilityType.APP, "/Users/mkolis/projects/personal/hillel/appium-multiplatform-example/src/main/resources/WordPress.app");
+        desiredCapabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/src/main/resources/WordPress.app");
         desiredCapabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 300);
 
         return desiredCapabilities;
     }
 
 
-    // TODO: Move app value to managers.ConfigurationManager
-
-    // TODO: appPackage
-    // TODO: appActivity
     public static DesiredCapabilities androidCapabilities() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
@@ -32,9 +27,9 @@ public class PlatformCapabilities {
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, config.getDeviceName());
         desiredCapabilities.setCapability(MobileCapabilityType.UDID, "emulator-5554");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        desiredCapabilities.setCapability(MobileCapabilityType.APP, "/Users/mkolis/projects/personal/hillel/appium-multiplatform-example/src/main/resources/WordPress.apk");
-        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "org.wordpress.android");
-        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "org.wordpress.android.ui.WPLaunchActivity");
+        desiredCapabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/src/main/resources/WordPress.apk");
+        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, config.androidAppPackage());
+        desiredCapabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, config.androidAppActivity());
         desiredCapabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 300);
         desiredCapabilities.setCapability(MobileCapabilityType.NO_RESET, true);
         desiredCapabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 300);
@@ -49,8 +44,16 @@ public class PlatformCapabilities {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, config.getPlatformVersion());
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, config.getDeviceName());
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
-        capabilities.setCapability(  "bundleId", "com.imurchie.SafariLauncher");
 
+        return capabilities;
+    }
+
+    public static DesiredCapabilities androidChromeCapabilities(){
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, config.getDeviceName());
+        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 180);
+        capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "com.google.android.apps.chrome.Main");
         return capabilities;
     }
 }
