@@ -104,12 +104,6 @@ public class BrowserProxxyTest {
         webDriver.get("http://www.fr.wix.com");
     }
 
-    @Test
-    public void saveConsoleLogs() {
-
-    }
-
-
     @After
     public void tearDown() {
         webDriver.quit();
