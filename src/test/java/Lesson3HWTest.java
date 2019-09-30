@@ -24,7 +24,7 @@ public class Lesson3HWTest extends AppiumTestBase {
         WebElement welcomeTextHolder = driver.findElement(By.cssSelector(".txtNew"));
 
         Assert.assertEquals(data.getSignInButtonTitle(), signInButton.getText());
-        Assert.assertEquals(data.getCreateButtonTitle(), welcomeTextHolder.getText());
+        Assert.assertEquals(data.getWelcomeText(), welcomeTextHolder.getText());
 
     }
 }
